@@ -20,17 +20,6 @@
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "strict": false,
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@@/*": [
-        "./src/.umi/*"
-      ],
-      "@/ops-shared/*": [
-        "./src/ops-shared/*"
-      ]
-    }
   },
   "include": [
     "mock/**/*",

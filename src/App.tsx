@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Viewer from './Viewer';
 import './App.css';
 import './custom.scss';
+import ForgeViewer from './3DModel/ForgeViewer';
 
 interface AppProps {
     token: string;
@@ -25,20 +26,27 @@ function App(props: AppProps) {
         setCamera([position.x, position.y, position.z]);
     };
 
-    const onSelectionChange = (selectionInfo: { viewer: any; ids: number[] }) => {
-        setSelectedIds(selectionInfo.ids);
+    const onSelectionChange = ({ viewer, selection }: { viewer: any; selection: number[] }) => {
+        setSelectedIds(selection);
     };
 
     return (
         <div className="app">
-            <div style={{ position: 'relative', width: '1400px', height: '600px' }}>
-                <Viewer
+            <div style={{ position: 'relative', width: '1400px', height: '700px' }}>
+                {/* <Viewer
                     ref={wrapper}
                     runtime={{ accessToken: token, language: 'en', document: '/Fox/glTF/Fox.gltf', env: 'Local' }}
                     selectedIds={selectedIds}
                     onCameraChange={onCameraChange}
                     onSelectionChange={onSelectionChange}
-                />
+                /> */}
+                <ForgeViewer
+                    token={token}
+                    urn={urn}
+                    onSelectionChange={onSelectionChange}
+                    onCameraChange={onCameraChange}
+                    selectedIds={selectedIds}
+                    />
             </div>
             <div>
                 Camera Position: {camera && `${camera[0].toFixed(2)} ${camera[1].toFixed(2)} ${camera[2].toFixed(2)}`}

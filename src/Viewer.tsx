@@ -1,6 +1,7 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { ExplodeExtension } from './extensions/Explode/Explode';
 import { LinkTicketExtension } from './extensions/LinkTicketExtension/LinkTicketExtension';
+import { PropertyPanelExtend } from './extensions/PropertyPanelExtend/PropertyPanelExtend';
 
 declare global {
     interface Window {
@@ -131,6 +132,10 @@ function Viewer(props: ViewerProps, ref: any): JSX.Element {
         const linkTaskExtension = new LinkTicketExtension(viewerRef.current)
         linkTaskExtension.load()
         linkTaskExtension.onToolbarCreated()
+
+
+        const propertyPanelExtend = new PropertyPanelExtend(viewerRef.current)
+        propertyPanelExtend.load()
        }, 100);
 
 
